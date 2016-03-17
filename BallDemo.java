@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -29,20 +30,22 @@ public class BallDemo
         int ground = 400;   // position of the ground line
 
         myCanvas.setVisible(true);
-
+        
+        Random ra = new Random(); 
         // draw the ground
         myCanvas.drawLine(50, ground, 550, ground);
         int countX = 50;
         int countY = 60;
         
         ArrayList<BouncingBall> bolas = new ArrayList<BouncingBall>(); //Array donde guardaremos las bolas
+        
         for(int i = 0; i < numeroBolas; i++) {
             // crate and show the balls
-            BouncingBall ball = new BouncingBall(countX, countY, 16, Color.BLUE, ground, myCanvas);
-            ball.draw();  
+            Color colores = new Color(ra.nextInt(256),ra.nextInt(256),ra.nextInt(256)); // crea de la gama rgb tres colores aleatorios
+            BouncingBall ball = new BouncingBall(countX, countY, 16, colores, ground, myCanvas);
             bolas.add(ball);
-            countX+=32;
-            countY+=45;
+            countX+=10;
+            countY+=15;
         }
         // make them bounce
         boolean finished =  false;
