@@ -36,16 +36,20 @@ public class BallDemo
         myCanvas.drawLine(50, ground, 550, ground);
         int countX = 50;
         int countY = 60;
-        
+        int pX = 0;
+        int pY = 0;
+        int tamaño = 0;
         ArrayList<BouncingBall> bolas = new ArrayList<BouncingBall>(); //Array donde guardaremos las bolas
         
         for(int i = 0; i < numeroBolas; i++) {
-            // crate and show the balls
+            // crate and show the balls           
             Color colores = new Color(ra.nextInt(256),ra.nextInt(256),ra.nextInt(256)); // crea de la gama rgb tres colores aleatorios
-            BouncingBall ball = new BouncingBall(countX, countY, 16, colores, ground, myCanvas);
+            BouncingBall ball = new BouncingBall(pX, pY, tamaño, colores, ground, myCanvas);
             bolas.add(ball);
-            countX+=10;
-            countY+=15;
+            // posiciones y tamaños aleatorios
+            pX = ra.nextInt(150);
+            pY = ra.nextInt(200);
+            tamaño = ra.nextInt(10);
         }
         // make them bounce
         boolean finished =  false;
