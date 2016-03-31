@@ -70,12 +70,45 @@ public class BallDemo
     
      public void boxBounce(int num)
     {
+        int ground = 400;   // position of the ground line
+        
         myCanvas.setVisible(true);
+        
+        Random ra = new Random();
         // draw the ground
         myCanvas.drawLine(60, 60, 480, 60);
         myCanvas.drawLine(480, 60, 480, 480);
         myCanvas.drawLine(480, 480,60, 480);
         myCanvas.drawLine(60, 480, 60, 60);
+        
+        int countX = 50;
+        int countY = 60;
+        int pX = 0;
+        int pY = 0;
+        int tamaño = 0;
+        
+         ArrayList<BoxBall> bolas = new ArrayList<BoxBall>(); //Array donde guardaremos las bolas
+        
+        for(int i = 0; i < num; i++) {
+            // crate and show the balls           
+            Color colores = new Color(ra.nextInt(256),ra.nextInt(256),ra.nextInt(256)); // crea de la gama rgb tres colores aleatorios
+            BoxBall ball = new BoxBall(pX, pY, tamaño, colores, ground, myCanvas);
+            bolas.add(ball);
+            // posiciones y tamaños aleatorios
+            pX = ra.nextInt(150);
+            pY = ra.nextInt(200);
+            tamaño = ra.nextInt(10);
+        }
+        // make them bounce
+        boolean finished =  false;
+        
+         while(!finished) {
+            myCanvas.wait(50);           // small delay
+            for(int i = 0;i < bolas.size();i++)
+            {
+                bolas.get(i).move();                
+            }
+        }
         
         
     }
