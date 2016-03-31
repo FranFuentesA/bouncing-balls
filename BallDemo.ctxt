@@ -5,4 +5,6 @@ comment0.text=\r\n\ Create\ a\ BallDemo\ object.\ Creates\ a\ fresh\ canvas\ and
 comment1.params=numeroBolas
 comment1.target=void\ bounce(int)
 comment1.text=\r\n\ Simulate\ two\ bouncing\ balls\r\n
-numComments=2
+comment2.params=num
+comment2.target=void\ boxBounce(int)
+numComments=3

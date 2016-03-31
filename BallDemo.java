@@ -67,7 +67,16 @@ public class BallDemo
             }
         }
     }
-
-
+    
+     public void boxBounce(int num)
+    {
+        myCanvas.setVisible(true);
+        // draw the ground
+        myCanvas.drawLine(60, 60, 480, 60);
+        myCanvas.drawLine(480, 60, 480, 480);
+        myCanvas.drawLine(480, 480,60, 480);
+        myCanvas.drawLine(60, 480, 60, 60);
+        
+        
     }
-
+}
