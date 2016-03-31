@@ -18,7 +18,7 @@ import java.awt.geom.*;
 
 public class BoxBall
 {
-    private static final int GRAVITY = 3;  // effect of gravity
+    //private static final int GRAVITY = 3;  // effect of gravity
 
     private int ballDegradation = 2;
     private Ellipse2D.Double circle;
@@ -29,6 +29,8 @@ public class BoxBall
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
     private int ySpeed = 1;                // initial downward speed
+    private boolean direccionUno;
+    private boolean direccionDos;
 
     /**
      * Constructor for objects of class BouncingBall
@@ -41,7 +43,7 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        int groundPos, Canvas drawingCanvas)
+                        int groundPos, Canvas drawingCanvas, boolean direc, boolean direc2)
     {
         xPosition = xPos;
         yPosition = yPos;
@@ -49,6 +51,8 @@ public class BoxBall
         diameter = ballDiameter;
         groundPosition = groundPos;
         canvas = drawingCanvas;
+       direccionUno = direc;
+       direccionDos = direc2;
     }
 
     /**
@@ -77,16 +81,34 @@ public class BoxBall
         erase();
             
         // compute new position
-        ySpeed += GRAVITY;
-        yPosition += ySpeed;
-        xPosition +=2;
+       
 
-        // check if it has hit the ground
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        // prueba si toca los lados cambia
+        if(((xPosition <= 61) || ((xPosition  >= 479 - diameter)))) {
+            
+            direccionUno = !direccionUno;
+        }
+        if(((yPosition <= 61)) || ((yPosition  >= 479 - diameter))){
+            
+            direccionDos = !direccionDos;
         }
 
+        if(direccionDos){
+            yPosition += ySpeed;
+        }
+        else
+        {
+            yPosition -= ySpeed;
+        }
+        
+        if(!direccionUno)
+        {
+            xPosition++;
+        }
+        else
+        {
+            xPosition--;
+        }
         // draw again at new position
         draw();
     }    

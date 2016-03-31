@@ -81,32 +81,39 @@ public class BallDemo
         myCanvas.drawLine(480, 480,60, 480);
         myCanvas.drawLine(60, 480, 60, 60);
         
-        int countX = 50;
-        int countY = 60;
+        int countX = 0;
+        int countY = 0;
         int pX = 0;
         int pY = 0;
         int tamaño = 0;
-        
-         ArrayList<BoxBall> bolas = new ArrayList<BoxBall>(); //Array donde guardaremos las bolas
+        boolean direc;
+        boolean direc2;
+         ArrayList<BoxBall> bolasB = new ArrayList<BoxBall>(); //Array donde guardaremos las bolas
         
         for(int i = 0; i < num; i++) {
-            // crate and show the balls           
+            // crate and show the balls   
+            direc = ra.nextBoolean();
             Color colores = new Color(ra.nextInt(256),ra.nextInt(256),ra.nextInt(256)); // crea de la gama rgb tres colores aleatorios
-            BoxBall ball = new BoxBall(pX, pY, tamaño, colores, ground, myCanvas);
-            bolas.add(ball);
+           //para que de valores aleatorios y asi cambie de direccion
+            direc = ra.nextBoolean(); 
+            direc2 = ra.nextBoolean();
+            BoxBall ball = new BoxBall(pX, pY, tamaño, colores, ground, myCanvas, direc, direc2);
+            bolasB.add(ball);
             // posiciones y tamaños aleatorios
-            pX = ra.nextInt(150);
-            pY = ra.nextInt(200);
-            tamaño = ra.nextInt(10);
+            
+            pX= ra.nextInt(300) + 80;
+            pY = ra.nextInt(200) + 80;
+            tamaño = ra.nextInt(30) + 20;
+            
         }
         // make them bounce
         boolean finished =  false;
         
          while(!finished) {
             myCanvas.wait(50);           // small delay
-            for(int i = 0;i < bolas.size();i++)
+            for(int i = 0;i < bolasB.size();i++)
             {
-                bolas.get(i).move();                
+                bolasB.get(i).move();                
             }
         }
         
