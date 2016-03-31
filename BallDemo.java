@@ -97,13 +97,14 @@ public class BallDemo
            //para que de valores aleatorios y asi cambie de direccion
             direc = ra.nextBoolean(); 
             direc2 = ra.nextBoolean();
+             pX= ra.nextInt(300) + 80;
+            pY = ra.nextInt(200) + 80;
+            tamaño = ra.nextInt(30) + 20;
             BoxBall ball = new BoxBall(pX, pY, tamaño, colores, ground, myCanvas, direc, direc2);
             bolasB.add(ball);
             // posiciones y tamaños aleatorios
             
-            pX= ra.nextInt(300) + 80;
-            pY = ra.nextInt(200) + 80;
-            tamaño = ra.nextInt(30) + 20;
+           
             
         }
         // make them bounce

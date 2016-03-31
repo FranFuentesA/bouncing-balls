@@ -29,8 +29,8 @@ public class BoxBall
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
     private int ySpeed = 1;                // initial downward speed
-    private boolean direccionUno;
-    private boolean direccionDos;
+    private boolean direccionUno;           //movimiento eje x
+    private boolean direccionDos;           //movimiento eje y
 
     /**
      * Constructor for objects of class BouncingBall
@@ -74,6 +74,7 @@ public class BoxBall
 
     /**
      * Move this ball according to its position and speed and redraw.
+     * 
      **/
     public void move()
     {
@@ -94,11 +95,11 @@ public class BoxBall
         }
 
         if(direccionDos){
-            yPosition += ySpeed;
+            yPosition ++;
         }
         else
         {
-            yPosition -= ySpeed;
+            yPosition --;
         }
         
         if(!direccionUno)
